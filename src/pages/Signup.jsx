@@ -25,7 +25,7 @@ const Signup = () => {
   });
   // Function to handle form submission
   // This function will be called when the form is submitted
-  const handleSubmit = (e) => {    
+  const handleSubmit = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, userData.email, userData.password)
       .then(() => {
@@ -40,9 +40,7 @@ const Signup = () => {
                 email: auth.currentUser.email,
                 profile_picture: auth.currentUser.photoURL,
               });
-              toast.success(
-                "Profile updated successfully! Please verify your email address."
-              );
+              toast.success("Profile updated successfully! Please verify your email address.");
               setTimeout(() => {
                 Navigate ("/login")
               }, 1000);
