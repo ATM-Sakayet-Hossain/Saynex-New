@@ -9,10 +9,11 @@ import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { GoLock } from "react-icons/go";
-import { Link, Navigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
+  const Navigate = useNavigate();
   const db = getDatabase();
   const auth = getAuth();
   const [userData, setUserData] = useState({
@@ -22,9 +23,7 @@ const Signup = () => {
   });
   // Function to handle form submission
   // This function will be called when the form is submitted
-  const handleSubmit = (e) => {
-    console.log("userData", userData);
-    
+  const handleSubmit = (e) => {    
     e.preventDefault();
     createUserWithEmailAndPassword(auth, userData.email, userData.password)
       .then(() => {
@@ -43,35 +42,32 @@ const Signup = () => {
                 "Profile updated successfully! Please verify your email address."
               );
               setTimeout(() => {
-                <Navigate to="/login" />;
-              }, 2000);
+                Navigate ("/login")
+              }, 1000);
             });
           })
           .catch(() => {
-            toast("Error updating profile. Please try again.");
+            toast.error("Error updating profile. Please try again.");
           });
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
-          toast("Email already in use. Please try another email.");
+          toast.error("Email already in use. Please try another email.");
         }
         if (error.code === "auth/invalid-email") {
-          toast("Please Type your Email.");
+          toast.error("Please Type your Email.");
         }
         if (error.code === "auth/missing-email") {
-          toast("Please Type your Email.");
+          toast.error("Please Type your Email.");
         }
         if (error.code === "auth/missing-password") {
-          toast("Please Type your Email.");
+          toast.error("Please Type your Email.");
         }
         if (error.code === "auth/weak-password") {
-          toast("Please Type your Password with at least 6 characters");
+          toast.error("Please Type your Password with at least 6 characters");
         }
-
-        // ..
       });
   };
-  console.log(auth.currentUser);
   
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">

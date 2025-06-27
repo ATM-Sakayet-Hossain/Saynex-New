@@ -1,10 +1,43 @@
-import React from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
+  const auth = getAuth();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  const handleLogin = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, userData.email, userData.password)
+      .then((res) => {
+        if (!res.user.emailVerified) {
+          toast.error("Please verify your email address before logging in.");
+        }else{
+
+          console.log("Login Successful", res.user);
+        }
+      })
+      .catch((error) => {
+        console.log("Error Code:", error.Code);
+        console.log("Error message:", error.message);
+        if (error.code === "auth/invalid-email") {
+          toast.error("Please Type your Email.");
+        }
+        if (error.code === "auth/missing-password") {
+          toast.error("Please Type your password.");
+        }
+        if (error.code === "auth/invalid-credential") {
+          toast.error("Your Email/password is invalid.");
+        }
+      });
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">
+      <ToastContainer position="top-right" theme="light" />
       <div
         style={{
           boxShadow:
@@ -25,6 +58,9 @@ const Login = () => {
                   Email address
                 </label>
                 <input
+                  onChange={(e) =>
+                    setUserData((prev) => ({ ...prev, email: e.target.value }))
+                  }
                   type="email"
                   name="email"
                   id="email"
@@ -40,6 +76,12 @@ const Login = () => {
                   Password
                 </label>
                 <input
+                  onChange={(e) =>
+                    setUserData((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
                   type="password"
                   name="password"
                   id="password"
@@ -79,6 +121,7 @@ const Login = () => {
 
             <div>
               <button
+                onClick={handleLogin}
                 type="submit"
                 className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
