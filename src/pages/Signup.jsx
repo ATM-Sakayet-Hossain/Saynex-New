@@ -9,10 +9,12 @@ import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { GoLock } from "react-icons/go";
+import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
+  const userInfo = useSelector((state) => state.userData.user)
   const Navigate = useNavigate();
   const db = getDatabase();
   const auth = getAuth();
@@ -29,7 +31,7 @@ const Signup = () => {
       .then(() => {
         updateProfile(auth.currentUser, {
           displayName: userData.fullName,
-          photoURL: "/default-profile.png",
+          photoURL: "/Profile.jpg",
         })
           .then(() => {
             sendEmailVerification(auth.currentUser).then(() => {
@@ -68,6 +70,9 @@ const Signup = () => {
         }
       });
   };
+  if (userInfo) {
+    return <Navigate to="/" />
+  }
   
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">

@@ -1,11 +1,16 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
+import { loggedUser } from "../../store/authSlice";
 
 const Login = () => {
+  const userInfo = useSelector((state) => state.userData.user)
   const auth = getAuth();
+  const Navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -16,9 +21,11 @@ const Login = () => {
       .then((res) => {
         if (!res.user.emailVerified) {
           toast.error("Please verify your email address before logging in.");
-        }else{
-
-          console.log("Login Successful", res.user);
+        } else {
+          toast.success("Login Successful");
+          setTimeout(() => {
+            dispatch(loggedUser(res.user)), Navigate("/");
+          }, 1000);
         }
       })
       .catch((error) => {
@@ -35,6 +42,9 @@ const Login = () => {
         }
       });
   };
+  if (userInfo) {
+    return <Navigate to="/" />
+  }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">
       <ToastContainer position="top-right" theme="light" />
