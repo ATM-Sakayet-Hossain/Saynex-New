@@ -8,7 +8,7 @@ import UserChat from "./UserChat";
 const Chatlist = () => {
   return (
     <>
-      <div className="w-xl flex flex-col pt-12 pl-5 truncate">
+      <div className="w-md flex flex-col pt-12 pl-5 h-screen truncate">
         <div>
           <div className="flex justify-between items-center pb-4 pr-4">
             <h2 className="text-2xl font-semibold">Chats</h2>
@@ -25,7 +25,55 @@ const Chatlist = () => {
             />
           </div>
         </div>
-        <div className="pt-2 overflow-y-auto mt-2 h-screen scrollbar-none">
+        <div className="pt-2 mt-2 h-full overflow-y-auto scrollbar-hide">
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
+          <UserChat />
           <UserChat />
           <UserChat />
         </div>
