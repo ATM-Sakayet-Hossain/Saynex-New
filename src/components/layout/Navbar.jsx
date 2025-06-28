@@ -38,10 +38,10 @@ const Navbar = () => {
             onClick={() => setActiveIndex(index)}
           >
             <Link
-              className="flex flex-col items-center justify-center text-[#EAF8E7] font-medium relative w-full"
+              className="flex flex-col items-center justify-center text-[#fff] font-medium relative w-full"
             >
               <span
-                className={`icon text-[#C1E6BA] text-[1.5em] leading-[75px] transition-transform duration-500 ${
+                className={`icon text-[#fff] text-[1.5em] leading-[75px] transition-transform duration-500 ${
                   activeIndex === index ? "scale-[1.5] z-[52]" : ""
                 }`}
               >
@@ -62,11 +62,11 @@ const Navbar = () => {
 
         {/* Indicator */}
         <div
-          className="absolute w-[90px] h-[90px] rounded-full border-[5px] border-[#494949] bg-[#023336] right-[-50%] transition-transform duration-500"
+          className="absolute w-[90px] h-[90px] rounded-full border-[5px] border-[#fff] bg-[#ee1f1f] right-[-50%] transition-transform duration-500 -z-1"
           style={{ transform: `translateY(${activeIndex * 90}px)` }}
         >
-          <div className="absolute -top-[22px] left-[31%] w-[20px] h-[20px] rotate-90 rounded-tr-[20px] shadow-[0px_-10px_0_0_#494949]" />
-          <div className="absolute -bottom-[22px] left-[31%] w-[20px] h-[20px] rotate-90 rounded-tl-[20px] shadow-[0px_-10px_0_0_#494949]" />
+          <div className="absolute -top-[22px] left-[31%] w-[20px] h-[20px] rotate-90 rounded-tr-[20px] shadow-[0px_-10px_0_0_#fff]" />
+          <div className="absolute -bottom-[22px] left-[31%] w-[20px] h-[20px] rotate-90 rounded-tl-[20px] shadow-[0px_-10px_0_0_#fff]" />
         </div>
       </ul>
     </section>
