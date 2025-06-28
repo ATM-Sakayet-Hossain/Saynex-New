@@ -6,11 +6,11 @@ import { IoHomeOutline, IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 const navItems = [
-  { icon: <IoHomeOutline />, label: "Home" },
+  { icon: <IoHomeOutline />, label: "Home", path: "/" },
   { icon: <IoIosContact />, label: "Contact" },
-  { icon: <GrGroup />, label: "Group" },
-  { icon: <IoSettingsOutline />, label: "Setting" },
-  { icon: <CgProfile />, label: "About" },
+  { icon: <GrGroup />, label: "Group", path: "/group" },
+  { icon: <IoSettingsOutline />, label: "Setting", path: "/setting" },
+  { icon: <CgProfile />, label: "About", path: "/profile" },
 ];
 
 const Navbar = () => {
@@ -18,16 +18,15 @@ const Navbar = () => {
 
   return (
     <section className="fixed top-1/2 left-0 w-[82px] h-[506px] z-50 bg-[#4DA674] rounded-r-[20px] transform -translate-y-1/2 py-[30px] px-0">
-      {/* Top Left Curved */}
-      <div className="absolute top-0 left-0 w-[25px] h-[25px] overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-[200%] h-[200%] rounded-full shadow-[inset_-17px_17px_0_0_#4DA674]" />
+      
+      <div className="absolute top-0 left-0 w-[25px] h-[25px] overflow-hidden -translate-y-full">
+        <div className="absolute bottom-0 left-0 w-[200%] h-[200%] rounded-full shadow-[-17px_17px_0_0_#4DA674]" />
       </div>
 
-      {/* Bottom Left Curved */
-      <div className="absolute bottom-0 left-0 w-[25px] h-[25px] overflow-hidden transform rotate-90 translate-y-full">
-        <div className="absolute bottom-0 left-0 w-[200%] h-[200%] rounded-full shadow-[inset_-17px_17px_0_0_#4DA674]" />
-      </div>}
-      
+        <div className="absolute bottom-0 left-0 w-[25px] h-[25px] overflow-hidden transform rotate-90 translate-y-full">
+          <div className="absolute bottom-0 left-0 w-[200%] h-[200%] rounded-full shadow-[-17px_17px_0_0_#4DA674]" />
+        </div>
+
       <ul className="flex flex-col items-center w-full">
         {navItems.map((item, index) => (
           <li
@@ -38,6 +37,7 @@ const Navbar = () => {
             onClick={() => setActiveIndex(index)}
           >
             <Link
+              to={item.path}
               className="flex flex-col items-center justify-center text-[#fff] font-medium relative w-full"
             >
               <span
