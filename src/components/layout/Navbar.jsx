@@ -7,7 +7,7 @@ import { Link } from "react-router";
 
 const navItems = [
   { icon: <IoHomeOutline />, label: "Home", path: "/" },
-  { icon: <IoIosContact />, label: "Contact" },
+  { icon: <IoIosContact />, label: "Contact", path: "/contact" },
   { icon: <GrGroup />, label: "Group", path: "/group" },
   { icon: <IoSettingsOutline />, label: "Setting", path: "/setting" },
   { icon: <CgProfile />, label: "About", path: "/profile" },
@@ -18,7 +18,6 @@ const Navbar = () => {
 
   return (
     <section className="fixed top-1/2 left-0 w-[82px] h-[506px] z-50 bg-[#4DA674] rounded-r-[20px] transform -translate-y-1/2 py-[30px] px-0">
-      
       <div className="absolute top-0 left-0 w-[25px] h-[25px] overflow-hidden -translate-y-full">
         <div className="absolute bottom-0 left-0 w-[200%] h-[200%] rounded-full shadow-[-17px_17px_0_0_#4DA674]" />
       </div>

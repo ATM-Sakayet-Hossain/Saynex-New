@@ -1,8 +1,12 @@
 import React from 'react'
+import Chatlist from '../components/Chatlist'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <h1>Welcome to the Chat App</h1>
+      <Chatlist />
+    </div>
   )
 }
 
