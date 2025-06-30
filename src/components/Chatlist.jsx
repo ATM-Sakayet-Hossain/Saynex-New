@@ -25,7 +25,7 @@ const Chatlist = () => {
             />
           </div>
         </div>
-        <div className="pt-2 mt-2 h-full overflow-y-auto scrollbar-hide">
+        <div className="pt-2 mt-2 h-full overflow-y-auto scrollbar-none">
           <UserChat />
           <UserChat />
           <UserChat />
